@@ -1,0 +1,43 @@
+{
+  "name": "socklnd-client",
+  "version": "0.5.0",
+  "description": "Client for SockLND server",
+  "main": "dist/node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "grunt build",
+    "build:browser": "grunt build-browser",
+    "build:node": "grunt build-node",
+    "publish": "grunt publish",
+    "watch": "grunt start-watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitarmy/socklnd-client.git"
+  },
+  "keywords": [
+    "bitcoin",
+    "lnd",
+    "socklnd",
+    "client",
+    "websocket"
+  ],
+  "author": "Agustin Kassis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bitarmy/socklnd-client/issues"
+  },
+  "homepage": "https://github.com/bitarmy/socklnd-client#readme",
+  "dependencies": {
+    "sails.io.js": "^1.2.1",
+    "socket.io-client": "^2.3.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^2.1.0",
+    "grunt-contrib-uglify-es": "^3.3.0",
+    "grunt-contrib-watch": "^1.1.0"
+  }
+}

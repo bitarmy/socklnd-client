@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Sails Socket SDK example (browser)</h1>
+    <em>(check out the javascript console)</h1>
+
+    <script type="text/javascript" src="socklnd-client.js"></script>
+
+    <script>
+
+      let apikey = 'invalidkey';
+      apikey = 'user_22b312c731ea62671674a4a2164c434e';
+      let socket = window.sock = socklnd.connect('http://localhost:1337/', apikey);
+
+      socket.on('connect', (err) => {
+        if (err) {
+          console.info('Error!');
+          return console.error(err)
+        };
+        console.info('Conected!');
+      });
+
+      socket.on('error', (err) => {
+        if (err) {
+          console.info('Error!');
+          return console.error(err)
+        };
+        console.info('Conected!');
+      });
+
+      console.info('Subscribing payment...');
+      socket.subscribe('payment', {
+        paymentHash: 'hasdkdjadk'
+      }, (res, jwt) => {
+        if (jwt.statusCode !== 200) {
+          console.error('Error while trying to subscribe');
+          console.error(jwt.statusCode, res);
+          return;
+        }
+        console.info('Subscribed');
+        console.dir(res);
+      });
+
+
+      socket.on('payment', invoice => {
+        console.dir('Invoice payed!');
+        console.dir(invoice);
+      });
+      //
+      // socket.on('disconnect', res => {
+      //   console.info('Desconectado mi viejo!');
+      // });
+
+
+
+      // SIMPLE
+      //
+      // socket.subscribe('payment', {
+      //   paymentHash: 'hasdkdjadk'
+      // });
+      //
+      // socket.on('payment', invoice => {
+      //   console.dir('Invoice payed!');
+      //   console.dir(invoice);
+      // });
+
+    </script>
+  </body>
+</html>
