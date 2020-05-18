@@ -1,4 +1,4 @@
-/*! socklnd-client - v0.1.0 - 2020-05-17 */
+/*! socklnd-client - v0.5.0 - 2020-05-17 */
 /**
  * To use sails.io.js in an AMD environment (e.g. with require.js),
  * replace this file with the sails.io.js file from the root of:
@@ -1750,7 +1750,8 @@ class SockLNDClient {
     const opts = {
       query: 'apikey=' + apiKey
     };
-    return enhanceSocket.call(this, io.sails.connect(url, opts));
+    this.sails.url = url;
+    return enhanceSocket.call(this, this.io.sails.connect(url, opts));
   }
 
   setPrefix(prefix) {
@@ -1761,12 +1762,9 @@ class SockLNDClient {
 
 function enhanceSocket(sailsSocket) {
   const socket = sailsSocket;
-
   socket.subscribe = (event, data, cb) => {
-    return sock.post(this.prefix + '/subscribe/' + event, data , cb);
+    return socket.post(this.prefix + '/subscribe/' + event, data , cb);
   };
-
-
 
   return socket;
 }

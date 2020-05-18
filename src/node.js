@@ -2,12 +2,12 @@ const socketIOClient = require('socket.io-client'),
       sailsIOClient = require('sails.io.js');
 
 class SockLNDClientWrapper extends SockLNDClient {
-  constructor(io) {
-    if (io === undefined) {
-      io = sailsIOClient(socketIOClient);
+  constructor (enhancedIO) {
+    if (enhancedIO === undefined) {
+      enhancedIO = sailsIOClient(socketIOClient);
     }
-    super(io);
-  }
+    super(enhancedIO);
+  };
 }
 
 module.exports = SockLNDClientWrapper;

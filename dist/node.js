@@ -1,4 +1,4 @@
-/*! socklnd-client - v0.1.0 - 2020-05-17 */
+/*! socklnd-client - v0.5.0 - 2020-05-17 */
 class SockLNDClient {
   constructor(_providedSocketIO) {
     this.io = _providedSocketIO;
@@ -12,7 +12,8 @@ class SockLNDClient {
     const opts = {
       query: 'apikey=' + apiKey
     };
-    return enhanceSocket.call(this, io.sails.connect(url, opts));
+    this.sails.url = url;
+    return enhanceSocket.call(this, this.io.sails.connect(url, opts));
   }
 
   setPrefix(prefix) {
@@ -23,12 +24,9 @@ class SockLNDClient {
 
 function enhanceSocket(sailsSocket) {
   const socket = sailsSocket;
-
   socket.subscribe = (event, data, cb) => {
-    return sock.post(this.prefix + '/subscribe/' + event, data , cb);
+    return socket.post(this.prefix + '/subscribe/' + event, data , cb);
   };
-
-
 
   return socket;
 }
@@ -37,12 +35,12 @@ const socketIOClient = require('socket.io-client'),
       sailsIOClient = require('sails.io.js');
 
 class SockLNDClientWrapper extends SockLNDClient {
-  constructor(io) {
-    if (io === undefined) {
-      io = sailsIOClient(socketIOClient);
+  constructor (enhancedIO) {
+    if (enhancedIO === undefined) {
+      enhancedIO = sailsIOClient(socketIOClient);
     }
-    super(io);
-  }
+    super(enhancedIO);
+  };
 }
 
 module.exports = SockLNDClientWrapper;

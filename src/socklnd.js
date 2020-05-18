@@ -11,7 +11,8 @@ class SockLNDClient {
     const opts = {
       query: 'apikey=' + apiKey
     };
-    return enhanceSocket.call(this, io.sails.connect(url, opts));
+    this.sails.url = url;
+    return enhanceSocket.call(this, this.io.sails.connect(url, opts));
   }
 
   setPrefix(prefix) {
@@ -22,12 +23,9 @@ class SockLNDClient {
 
 function enhanceSocket(sailsSocket) {
   const socket = sailsSocket;
-
   socket.subscribe = (event, data, cb) => {
-    return sock.post(this.prefix + '/subscribe/' + event, data , cb);
+    return socket.post(this.prefix + '/subscribe/' + event, data , cb);
   };
-
-
 
   return socket;
 }

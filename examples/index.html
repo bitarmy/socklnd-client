@@ -19,20 +19,16 @@
           console.info('Error!');
           return console.error(err)
         };
-        console.info('Conected!');
+        console.info('Connected!');
       });
 
       socket.on('error', (err) => {
-        if (err) {
-          console.info('Error!');
-          return console.error(err)
-        };
-        console.info('Conected!');
+        console.error(err)
       });
 
       console.info('Subscribing payment...');
       socket.subscribe('payment', {
-        paymentHash: 'hasdkdjadk'
+        paymentHash: 'SOME_PAYMENT_HASH'
       }, (res, jwt) => {
         if (jwt.statusCode !== 200) {
           console.error('Error while trying to subscribe');
@@ -48,24 +44,6 @@
         console.dir('Invoice payed!');
         console.dir(invoice);
       });
-      //
-      // socket.on('disconnect', res => {
-      //   console.info('Desconectado mi viejo!');
-      // });
-
-
-
-      // SIMPLE
-      //
-      // socket.subscribe('payment', {
-      //   paymentHash: 'hasdkdjadk'
-      // });
-      //
-      // socket.on('payment', invoice => {
-      //   console.dir('Invoice payed!');
-      //   console.dir(invoice);
-      // });
-
     </script>
   </body>
 </html>
