@@ -1,4 +1,4 @@
-/*! socklnd-client - v0.5.0 - 2020-05-17 */
+/*! socklnd-client - v0.5.1 - 2020-05-17 */
 /**
  * To use sails.io.js in an AMD environment (e.g. with require.js),
  * replace this file with the sails.io.js file from the root of:

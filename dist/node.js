@@ -1,4 +1,4 @@
-/*! socklnd-client - v0.5.0 - 2020-05-17 */
+/*! socklnd-client - v0.5.1 - 2020-05-17 */
 class SockLNDClient {
   constructor(_providedSocketIO) {
     this.io = _providedSocketIO;
