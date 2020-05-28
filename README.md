@@ -1,5 +1,5 @@
-# SockLND-client
-Client for SockLND server
+# [<img title="socklnd-client - JavaScript Client SDK for SockLND" src="https://i.imgur.com/LhQkezJ.png" width="300px" alt="icon of socklnd"/>](https://github.com/bitarmy/socklnd-client) client
+Client for SockLND server (Javascript Version)
 
 [![NPM version](https://badge.fury.io/js/socklnd-client.svg)](http://badge.fury.io/js/socklnd-client) &nbsp; &nbsp;
 
